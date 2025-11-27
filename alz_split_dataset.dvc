@@ -1,0 +1,6 @@
+outs:
+- md5: 415413d47f147e562f70bbb68f81d506.dir
+  size: 419565406
+  nfiles: 44000
+  hash: md5
+  path: alz_split_dataset

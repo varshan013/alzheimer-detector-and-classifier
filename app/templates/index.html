@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alzheimer MRI Classifier</title>
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            font-family: 'Segoe UI', sans-serif;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 18px;
+            padding: 3rem 3.5rem;
+            text-align: center;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+            width: 420px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+
+        form {
+            margin-top: 2rem;
+        }
+
+        input[type=file] {
+            width: 100%;
+            padding: 0.8rem;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            width: 100%;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .note {
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Alzheimer MRI Classifier</h1>
+        <p>Upload a brain MRI to analyze dementia severity using deep learning.</p>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Analyze MRI</button>
+        </form>
+
+        <div class="note">
+            For research & educational use only. Not a medical diagnosis.
+        </div>
+    </div>
+</body>
+</html>

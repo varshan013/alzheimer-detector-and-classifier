@@ -1,0 +1,5 @@
+outs:
+- md5: 63ffaf7e890af000cc70ca03c51b7313
+  size: 40335936
+  hash: md5
+  path: alz_model.h5

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MRI Prediction Result</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #0f172a;
+            font-family: 'Segoe UI', sans-serif;
+            color: #e2e8f0;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .prediction-label {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: #a78bfa;
+        }
+
+        .confidence {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #38bdf8;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .recommend-box {
+            padding: 1rem;
+            border-left: 4px solid #6366f1;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+        }
+
+        ul {
+            margin-top: 0.5rem;
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.3rem;
+            color: #cbd5e1;
+        }
+
+        .images {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .images img {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1rem;
+            background: #1e293b;
+            border-radius: 10px;
+            color: #e2e8f0;
+            text-decoration: none;
+            border: 1px solid #334155;
+        }
+
+        .back-btn:hover {
+            background: #334155;
+        }
+
+        .disclaimer {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- LEFT: Prediction -->
+        <div class="card">
+            <h1>Prediction Result</h1>
+            <div class="prediction-label">{{ predicted_class }}</div>
+            <div class="confidence">Confidence: {{ confidence }}%</div>
+
+            <div class="description">{{ description }}</div>
+
+            <div class="recommend-box">
+                <strong>Recommendations:</strong>
+                <ul>
+                    {% for rec in recommendations %}
+                        <li>{{ rec }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <a href="{{ url_for('index') }}" class="back-btn">Analyze another MRI</a>
+
+            <div class="disclaimer">
+                This model is for research & educational use only. This is not a medical diagnosis.
+            </div>
+        </div>
+
+        <!-- RIGHT: Images (MRI + GradCAM) -->
+        <div class="card images">
+
+            {% if orig_url %}
+            <div>
+                <h2>Original MRI</h2>
+                <img src="{{ orig_url }}" alt="MRI Image">
+            </div>
+            {% endif %}
+
+            {% if gradcam_url %}
+            <div>
+                <h2>Grad-CAM Heatmap</h2>
+                <img src="{{ gradcam_url }}" alt="GradCAM Heatmap">
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</body>
+</html>

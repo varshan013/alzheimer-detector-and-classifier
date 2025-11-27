@@ -1,0 +1,11 @@
+tensorflow
+numpy
+pillow
+scikit-learn
+matplotlib
+flask
+gunicorn
+jinja2
+werkzeug
+mlflow
+dvc
